@@ -1,0 +1,13 @@
+{
+    "name": "icawebdesign/string-entities",
+    "description": "String entity encoder",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ian.H",
+            "email": "ian@ianh.io"
+        }
+    ],
+    "require": {}
+}

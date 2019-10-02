@@ -21,7 +21,9 @@ class StringEntities
         list ($account, $domain) = explode('@', $address);
 
         return sprintf(
-            '%s%%40%s', self::htmlhex($account), self::htmlentities($domain)
+            '%s%%40%s',
+            self::htmlhex($account),
+            self::htmlentities($domain)
         );
     }
 

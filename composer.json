@@ -1,13 +1,38 @@
 {
     "name": "icawebdesign/string-entities",
+    "version":     "1.0.0",
     "description": "String entity encoder",
+    "keywords": [
+        "icawebdesign",
+        "string",
+        "entity",
+        "entities",
+        "obfuscator",
+        "obfuscation"
+    ],
     "type": "library",
     "license": "MIT",
     "authors": [
         {
             "name": "Ian.H",
-            "email": "ian@ianh.io"
+            "email": "ian@ianh.io",
+            "role":  "Developer"
         }
     ],
-    "require": {}
+    "require": {
+        "php": ">=7.2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Icawebdesign\\StringEntities\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Icawebdesign\\StringEntities\\Tests\\": "tests"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.3"
+    }
 }

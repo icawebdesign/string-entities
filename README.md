@@ -1,8 +1,8 @@
 # PHP library for encoding strings into entities.
 
-[![pipeline status](https://gitlab.2up.io/ian/hibp-php/badges/master/pipeline.svg)](https://gitlab.2up.io/ian/hibp-php/commits/master)
+[![pipeline status](https://gitlab.2up.io/ian/string-entities/badges/master/pipeline.svg)](https://gitlab.2up.io/ian/string-entities/commits/master)
 
-
+Convert strings into HTML Entities and codes.
 
 ### Changelog
 

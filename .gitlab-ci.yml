@@ -7,16 +7,29 @@ cache:
   paths:
   - vendor/
 
-before_script:
-- apt-get install unzip
-- composer self-update
-- composer update
+#before_script:
+#- apt-get install unzip
+#- composer self-update
+#- composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
 
 # Define pipeline stages
 stages:
+  - prep
   - syntax
   - mess
   - test
+  - security
+
+composer:
+  stage: prep
+  script:
+    - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+  artifacts:
+    paths:
+      - vendor/
+      - .env
+    expire_in: 1 days
+    when: always
 
 phpcs:
   stage: syntax
@@ -43,6 +56,14 @@ php-7.2:
   only:
     refs:
       - master
+
+sensiolabs:
+  stage: security
+  script:
+    - test -d security-checker || git clone https://github.com/sensiolabs/security-checker.git
+    - cd security-checker
+    - composer install
+    - php security-checker security:check ../composer.lock
 
 # Run our tests
 # If Xdebug was installed you can generate a coverage report and see code coverage metrics.

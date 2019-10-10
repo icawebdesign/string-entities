@@ -7,11 +7,6 @@ cache:
   paths:
   - vendor/
 
-#before_script:
-#- apt-get install unzip
-#- composer self-update
-#- composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
-
 # Define pipeline stages
 stages:
   - prep
@@ -27,9 +22,11 @@ composer:
   artifacts:
     paths:
       - vendor/
-      - .env
     expire_in: 1 days
     when: always
+  only:
+    refs:
+      - master
 
 phpcs:
   stage: syntax
@@ -64,6 +61,9 @@ sensiolabs:
     - cd security-checker
     - composer install
     - php security-checker security:check ../composer.lock
+  only:
+    refs:
+      - master
 
 # Run our tests
 # If Xdebug was installed you can generate a coverage report and see code coverage metrics.
